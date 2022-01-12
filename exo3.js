@@ -2,15 +2,20 @@
 // crée une méthode retournant un booléen qui affiche si deux  
 // nombres de cette liste ont k comme résultat de leur somme.
 
+// COMPUTATIONAL COMPLEXITY : O(n) with several passes on the list
+
 const list1 = [10, 15, 3, 7];
 const k1 = 17;
 const list2 = [1, 8, 10, 21];
 const k2 = 19;
 
 const twoNumbersEnough = (array, number) => {
+  let valueToFind = undefined;
   for(let i = 0; i < array.length; i++) {
-    const valueToFind = number - array[i]; // value to be find in the array in order to return true
-    return array.find(element => element === valueToFind) != undefined ? true : false;
+    valueToFind = number - array[i]; // value to be find in the array in order to return true
+  }
+  for(let i = 0; i < array.length; i++) {
+    return array[i] === valueToFind ? true : false;
   }
 }
 

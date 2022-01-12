@@ -3,7 +3,7 @@
 // retourne combien de bâtiments de cette rue ont au moins un appartement avec une vue sur 
 // le soleil couchant (à l'ouest), afin de bien évaluer la valeur des bâtiments de la rue.
 
-// COMPUTATIONAL COMPLEXITY : O(n2)
+// COMPUTATIONAL COMPLEXITY : O(n) with one single pass-loop on the list
 
 const list1 = [3, 7, 8, 3, 6, 1];   // algo should output 3 (for 8, 6, and 1)
 const list2 = [1, 4, 5, 8];         // algo should output 1 (for 8)
@@ -11,14 +11,14 @@ const list2 = [1, 4, 5, 8];         // algo should output 1 (for 8)
 const biggerAfter = (array) => {
   let highests = [];
   for (let i = 0; i < array.length; i++) {
-    let iIsHighest = true;
-    for (let k = i+1; k < array.length; k++) {
-      if (array[k] > array[i]) iIsHighest = false;
-    }
+    let nextHighestValue = array
+      .slice(i)
+      .find(element => element > array[i]);
+    let iIsHighest = nextHighestValue === undefined ? true : false;
     if (iIsHighest === true) highests.push(array[i]);
   }
   return highests;
 }
 
-console.log(`Avec [${list1}], l'algo retourne : ` + biggerAfter(list1));
-console.log(`Avec [${list2}], l'algo retourne : ` + biggerAfter(list2));
+console.log(`Avec [${list1}], l'algo retourne : ` + biggerAfter(list1) + " (une seule passe)");
+console.log(`Avec [${list2}], l'algo retourne : ` + biggerAfter(list2) + " (une seule passe)");
