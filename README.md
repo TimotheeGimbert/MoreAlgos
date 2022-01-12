@@ -1,0 +1,1 @@
+Pour lancer les programmes de résultats des exercices, tapez simplement dans votre terminal "node exo.js" (où exo.js est le nom du fichier javascript à exécuter)
