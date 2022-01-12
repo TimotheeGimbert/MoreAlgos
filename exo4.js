@@ -9,10 +9,10 @@ const list2 = [1, 4, 5, 8];         // algo should output 1 (for 8)
 const biggerAfter = (array) => {
   let highests = [];
   for (let i = 0; i < array.length; i++) {
-    let iIsHighest = true;
-    for (let k = i+1; k < array.length; k++) {
-      if (array[k] > array[i]) iIsHighest = false;
-    }
+    let nextHighestValue = array
+      .slice(i)
+      .find(element => element > array[i]);
+    let iIsHighest = nextHighestValue === undefined ? true : false;
     if (iIsHighest === true) highests.push(array[i]);
   }
   return highests;
